@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Visualizing Trains from Indian Metros</title>
+		<script type="text/javascript" src="./js/d3.v3.js"></script>		
+		<style>
+			/* No style rules here yet */		
+		</style>
+	</head>
+	<body>
+		<div id="main-c">
+			<div id="svg-c">
+			</div>
+		</div>
+
+		<!-- ######################### -->
+
+		<script type="text/javascript">
+			var w=700;
+			var h=700;
+
+			var metro = new Array();
+			metro["Delhi"] = [77.2249600,28.6353080];
+			metro["Mumbai"] = [72.8776559,19.0759837];
+			metro["Kolkata"] = [88.3638950,22.5726460];
+			metro["Chennai"] = [80.2508246,13.0524139];
+
+			var xScale = 12, yScale = 15;
+			var xPadding = 700, yPadding = 100;
+
+
+			var svg = d3.select("#svg-c")
+						.append("svg")
+						.attr("width",w)
+						.attr("height",h);
+
+			var myData;
+			d3.csv("./data/Del-Raj.csv", function(error,data) {
+			  if (error) {  
+			  	//If error is not null, something went wrong.
+      		console.log(error);  //Log the error.
+        } else {      
+          //If no error, the file loaded correctly. Yay!
+          console.log("Dataset loaded!");
+	        // console.log(data[0].Scene+ " "+data[10].Day);   //Log the data.
+				 	console.log(data); 
+				 	// return data; 
+				 	// myData = data.map(function(d) { return [ +d["Scene"], d["Day"] ]; });
+				 	// console.log(myData);   //Log the data.
+				 	generateViz(data);				 	
+		 		}
+			 });
+
+			function generateViz(data) {				
+
+				var connected = svg.selectAll("path")
+														.data(data)
+														.enter()
+														.append("path")
+														.attr({
+															d: function(d,i) {
+																switch (d.from_station_gen) {
+																	case "Delhi":
+																		// console.log("Delhi!");
+																		console.log("M "+rX(metro['Delhi'][0])+" "+rY(metro['Delhi'][1])+" L"+rX(d.long)+" "+rY(d.lat))
+																		return "M "+rX(metro['Delhi'][0])+" "+rY(metro['Delhi'][1])+" L"+rX(d.long)+" "+rY(d.lat);
+																		break;
+																	default:
+																		console.log("Not a metro");
+																		break;
+																}
+															},
+															'fill': 'none',
+															'opacity': 0.5,
+															'stroke': "rgb(110,120,140)",
+															'stroke-width': "2",
+															//'stroke-dasharray': "1, 3000"
+														})
+														.on("mouseover", function(d) {
+													        console.log(d.to_station_name + "("+d.long+","+d.lat);
+													});
+			}
+
+			function rX(coord) {
+				return coord*xScale-xPadding;
+			}
+
+			function rY(coord) {
+				return h-(coord*yScale)-yPadding;
+			}
+
+		</script>
+	</body>
+</html>
