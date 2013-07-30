@@ -98,14 +98,15 @@
 																	return "#5050CC";
 																	break;
 																	case "Mumbai":
-																	return "50CC50";
+																	return "#50CC50";
 																	break;
 																	case "Chennai":
-																	return "CCCC50";
+																	return "#CCCC50";
 																	break;
 																	case "Kolkata":
-																	return "CC5050";
+																	return "#CC5050";
 																	break;
+																	default: break;
 																}
 															},
 															'stroke-width': "1",
@@ -114,6 +115,22 @@
 														.on("mouseover", function(d) {
 													        console.log(d.to_station_name + "("+d.long+","+d.lat);
 													});
+
+				var stations = svg.selectAll("circles")
+													.data(data)
+													.enter()
+													.append("circle")
+													.attr({
+														cx: function(d, i) {
+															return rX(d.long);
+														},
+														cy: function(d, i) {
+															return rY(d.lat);
+														},
+														r: 2, 
+														fill: "rgb(50,50,50)",
+														opacity: 0.1,
+													}); 
 			}
 
 			function rX(coord) {
