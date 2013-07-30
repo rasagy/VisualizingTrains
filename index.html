@@ -7,8 +7,8 @@
 		<style>
 			/* No style rules here yet */		
 			#main-c {
-				background: url("./img/map-of-india.gif") no-repeat;
-				background-size:500px 550px;
+/*				background: url("./img/map-of-india.gif") no-repeat;
+				background-size:500px 550px; */
 			}			
 		</style>
 	</head>
@@ -40,7 +40,7 @@
 						.attr("height",h);
 
 			var myData;
-			d3.csv("./data/Del-Raj.csv", function(error,data) {
+			d3.csv("./data/Metro-trains.csv", function(error,data) {
 			  if (error) {  
 			  	//If error is not null, something went wrong.
       		console.log(error);  //Log the error.
@@ -70,15 +70,45 @@
 																		console.log("M "+rX(metro['Delhi'][0])+" "+rY(metro['Delhi'][1])+" L"+rX(d.long)+" "+rY(d.lat))
 																		return "M "+rX(metro['Delhi'][0])+" "+rY(metro['Delhi'][1])+" L"+rX(d.long)+" "+rY(d.lat);
 																		break;
+																	case "Mumbai":
+																		// console.log("Delhi!");
+																		console.log("M "+rX(metro['Mumbai'][0])+" "+rY(metro['Mumbai'][1])+" L"+rX(d.long)+" "+rY(d.lat))
+																		return "M "+rX(metro['Mumbai'][0])+" "+rY(metro['Mumbai'][1])+" L"+rX(d.long)+" "+rY(d.lat);
+																		break;
+																	case "Chennai":
+																		// console.log("Delhi!");
+																		console.log("M "+rX(metro['Chennai'][0])+" "+rY(metro['Chennai'][1])+" L"+rX(d.long)+" "+rY(d.lat))
+																		return "M "+rX(metro['Chennai'][0])+" "+rY(metro['Chennai'][1])+" L"+rX(d.long)+" "+rY(d.lat);
+																		break;
+																	case "Kolkata":
+																		// console.log("Delhi!");
+																		console.log("M "+rX(metro['Kolkata'][0])+" "+rY(metro['Kolkata'][1])+" L"+rX(d.long)+" "+rY(d.lat))
+																		return "M "+rX(metro['Kolkata'][0])+" "+rY(metro['Kolkata'][1])+" L"+rX(d.long)+" "+rY(d.lat);
+																		break;
 																	default:
 																		console.log("Not a metro");
 																		break;
 																}
 															},
 															'fill': 'none',
-															'opacity': 0.5,
-															'stroke': "rgb(110,120,140)",
-															'stroke-width': "2",
+															'opacity': 0.2,
+															'stroke': function(d,i) {
+																switch (d.from_station_gen) {
+																	case "Delhi":
+																	return "#5050CC";
+																	break;
+																	case "Mumbai":
+																	return "50CC50";
+																	break;
+																	case "Chennai":
+																	return "CCCC50";
+																	break;
+																	case "Kolkata":
+																	return "CC5050";
+																	break;
+																}
+															},
+															'stroke-width': "1",
 															//'stroke-dasharray': "1, 3000"
 														})
 														.on("mouseover", function(d) {
