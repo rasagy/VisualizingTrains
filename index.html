@@ -6,6 +6,10 @@
 		<script type="text/javascript" src="./js/d3.v3.js"></script>		
 		<style>
 			/* No style rules here yet */		
+			#main-c {
+				background: url("./img/map-of-india.gif") no-repeat;
+				background-size:500px 550px;
+			}			
 		</style>
 	</head>
 	<body>
@@ -26,8 +30,8 @@
 			metro["Kolkata"] = [88.3638950,22.5726460];
 			metro["Chennai"] = [80.2508246,13.0524139];
 
-			var xScale = 12, yScale = 15;
-			var xPadding = 700, yPadding = 100;
+			var xScale = 17, yScale = 18;
+			var xPadding = 1152, yPadding = 27;
 
 
 			var svg = d3.select("#svg-c")
