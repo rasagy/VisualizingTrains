@@ -95,18 +95,21 @@
 															'stroke': function(d,i) {
 																switch (d.from_station_gen) {
 																	case "Delhi":
-																	return "#5050CC";
+																	return "hsl(0,80%,70%)";
 																	break;
 																	case "Mumbai":
-																	return "#50CC50";
+																	return "hsl(100,80%,70%)";
 																	break;
 																	case "Chennai":
-																	return "#CC22CC";
+																	return "hsl(150,80%,70%)";
 																	break;
 																	case "Kolkata":
-																	return "#CC7750";
+																	return "hsl(250,80%,70%)";
 																	break;
-																	default: break;
+																	default: 
+																	return "hsl(200,80%,70%)";
+
+																	break;
 																}
 															},
 															'stroke-width': "1",
