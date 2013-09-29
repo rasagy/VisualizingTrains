@@ -33,7 +33,8 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	line-height: 1;
+	line-height: 1.2;
+	background: #eee;
 }
 ol, ul {
 	list-style: none;
@@ -52,26 +53,82 @@ table {
 }
 
 /* /////////////// Main CSS ////////////// */	
+b {font-weight: bold;}
+i {font-style: italic;}
+
 #main-c {
-/*
-  background: url("./img/map-of-india.gif") no-repeat;
-  background-size:500px 550px; 
-*/
   position: relative;
   width:800px;
-  margin: 0 auto;
+  margin: 20px auto;
+  background: #fff;
 }
+#m-map {
+	position: absolute;
+	top: 0;
+	left: 0;
+  background: url("./img/map-of-india.gif") no-repeat;
+  background-size:500px 550px;
+  visibility: hidden;
+}
+
 #m-tip {
+	font-family: Arial, sans-serif;
+	font-size: 0.9em;
+	line-height: 1.2em;
+	padding: 5px;
+	background: rgba(250,250,250,0.9);
+	color: #111;
+	border: 1px solid #ddd;
+
 	position:absolute;
 	top:0px;
 	left:0px;
 	min-width:5px;
 	min-height:5px;
-	background:#eee;
+	
 	opacity:0;
 
 	-webkit-transition: all 0.5s;
 	-moz-transition: all 0.5s;
 	-o-transition: all 0.5s;
 	transition: all 0.5s;
+}
+#m-tip i, #m-tip b {
+	color: #000;
+}
+
+#text {
+position: absolute;
+top: 20px;
+left: 520px;
+width: 280px;
+background: #333;
+color: #f8f8f8;
+padding: 10px;
+border: 3px solid #222;
+}
+#text h2{
+font-family: Georgia, Times, serif;
+font-size: 1.6em;
+line-height: 1.2em;
+font-weight: bold;
+padding: 0.4em 0;
+}
+#text p {
+font-family: Arial, sans-serif;
+color: #eee;
+font-size: 0.8em;
+line-height: 1.5em;
+margin-bottom: 0.75em;
+}
+#text a {
+color: #fff;
+text-decoration: none;
+display:inline-block;
+background: #222;
+padding: 2px 2px;
+}
+#text a:hover {
+color: #f8f8f8;
+background: #111;
 }
