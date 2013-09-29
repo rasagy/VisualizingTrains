@@ -7,8 +7,8 @@ Track the project progress on: http://visualizingtrains.tumblr.com/ChhukChhuk
 
 ## Todo
 
-- Add Labels on hover
-- Use curved arcs instead of direct lines
-
+- Add Labels on hover (From > To)
+- Use curved arcs instead of direct lines (Not really)
 - Animate by City?
-- Animate by Time?
+- Animate by Time of Departure?
+- Animate by Time of Journey (Speed)?
