@@ -1,5 +1,5 @@
-var w=700;
-var h=700;
+var w=800;
+var h=600;
 
 var metro = new Array();
 metro["Delhi"] = [77.2249600,28.6353080];
@@ -9,12 +9,12 @@ metro["Chennai"] = [80.2508246,13.0524139];
 
 //Custom scale to fit underlying map
 var xScale = 17, yScale = 18;
-var xPadding = 1152, yPadding = 27;
+var xPadding = 1152, yPadding = -73;
 
 
-var initDelay = 200;  //Initial Delay before starting
-var aDelay=100;  //Delay
-var aSpeed=2;		 //Less is more!
+var initDelay = 1000;  //Initial Delay before starting
+var aDelay=50;  //Delay
+var aSpeed=1;		 //Less is more!
 
 var svg = d3.select("#svg-c")
       .append("svg")
@@ -96,7 +96,7 @@ function generateViz(data) {
     .on("mouseover", function(d) {    	
     	coord = d3.mouse(this);
       console.log(d.to_station_name + "("+d.long+","+d.lat+") / "+coord[0]+","+coord[1]);
-      msg=d.name+"<br>From <b>"+d.from_station_name+"</b> to <b>"+d.to_station_name+"</b>";
+      msg="<b>"+d.name+"</b><br>From <i>"+d.from_station_name+"</i> to <i>"+d.to_station_name+"</i>";
       showTip(msg,coord[0],coord[1]);
       
       d3.select(this)
