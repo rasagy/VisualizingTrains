@@ -7,9 +7,14 @@ metro["Mumbai"] = [72.8776559,19.0759837];
 metro["Kolkata"] = [88.3638950,22.5726460];
 metro["Chennai"] = [80.2508246,13.0524139];
 
+//Custom scale to fit underlying map
 var xScale = 17, yScale = 18;
 var xPadding = 1152, yPadding = 27;
 
+
+var initDelay = 200;  //Initial Delay before starting
+var aDelay=100;  //Delay
+var aSpeed=2;		 //Less is more!
 
 var svg = d3.select("#svg-c")
       .append("svg")
@@ -86,12 +91,12 @@ function generateViz(data) {
         }
       },
       'stroke-width': "1",
-      //'stroke-dasharray': "1, 3000"
+      'stroke-dasharray': "1, 500"
     })
     .on("mouseover", function(d) {    	
     	coord = d3.mouse(this);
       console.log(d.to_station_name + "("+d.long+","+d.lat+") / "+coord[0]+","+coord[1]);
-      msg="From "+d.from_station_name+" to "+d.to_station_name;
+      msg=d.name+"<br>From <b>"+d.from_station_name+"</b> to <b>"+d.to_station_name+"</b>";
       showTip(msg,coord[0],coord[1]);
       
       d3.select(this)
@@ -107,6 +112,13 @@ function generateViz(data) {
 	      	'stroke-width': "1",
 	    	});
 	    	// document.getElementById('m-tip').style.opacity=0.8;
+    })
+    .transition()
+    .duration(function(d) {return d.distance*aSpeed;})
+    .ease("linear")
+    .delay(function(d,i) {return i*aDelay + initDelay;})
+    .attr({
+      'stroke-dasharray': "500, 1"
     });
 
   var stations = svg
@@ -123,8 +135,16 @@ function generateViz(data) {
       },
       r: 1.5, 
       fill: "rgb(50,50,50)",
-      opacity: 0.1,
-    }); 
+      opacity: 0,
+    })
+    .transition()
+    .duration(function(d) {return 0;})
+    .ease("linear")
+    .delay(function(d,i) {return i*aDelay + initDelay;})
+    .attr({
+    	'opacity': "0.1",
+      'stroke-dasharray': "500, 1"
+    });
 }
 
 function showTip(text,x,y) {
