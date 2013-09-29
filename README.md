@@ -4,7 +4,9 @@ VisualizingTrains
 Visualizing trains in India (Team Chhuk Chhuk: Babu &amp; Rasagy)
 
 [View the final output](http://rasagy.github.io/VisualizingTrains)
+
 Short blog post about the visualization: [Coming soon!]()
+
 Detailed design process on [the project tumblr page](http://visualizingtrains.tumblr.com/ChhukChhuk)
 
 ## Suggestions
