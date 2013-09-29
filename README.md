@@ -3,12 +3,17 @@ VisualizingTrains
 
 Visualizing trains in India (Team Chhuk Chhuk: Babu &amp; Rasagy)
 
-Track the project progress on: http://visualizingtrains.tumblr.com/ChhukChhuk
+[View the final output](http://rasagy.github.io/VisualizingTrains)
 
-## Todo
+Short blog post about the visualization: [Coming soon!]()
 
-- Add Labels on hover (From > To)
+Detailed design process on [the project tumblr page](http://visualizingtrains.tumblr.com/ChhukChhuk)
+
+## Suggestions
+
+* Add Labels on hover (From > To)
 - Use curved arcs instead of direct lines (Not really)
-- Animate by City?
+* Animate by City?
 - Animate by Time of Departure?
-- Animate by Time of Journey (Speed)?
+* Animate by Time of Journey (Speed)?
+* Animate by Distance?
