@@ -1,0 +1,62 @@
+/* =============================================================
+
+    Social Sharing v2.0
+    Social sharing links and buttons without the bloat by Chris Ferdinandi.
+    http://gomakethings.com
+
+    Free to use under the MIT License.
+    http://gomakethings.com/mit/
+    
+ * ============================================================= */
+
+/*  Twitter button color */
+.btn-tweet {
+    background-color: #41b7d8;
+    border-color: #41b7d8; 
+}
+
+/*  Twitter button color on hover */
+.btn-tweet:hover, 
+a .btn-tweet:hover {
+    background-color: #3697b2;
+    border-color: #3697b2; 
+}
+
+/*  Facebook button color */
+.btn-facebook {
+    background-color: #3b5997;
+    border-color: #3b5997; 
+}
+
+/*  Facebook button color on hover */
+.btn-facebook:hover, 
+a .btn-facebook:hover {
+    background-color: #2c4370;
+    border-color: #2c4370; 
+}
+
+/*  Google button color */
+.btn-google {
+    background-color: #d64937;
+    border-color: #d64937;
+}
+
+/*  Facebook button color on hover */
+.btn-google:hover, 
+a .btn-google:hover {
+    background-color: #b03d2e;
+    border-color: #b03d2e;
+}
+
+/*  LinkedIn button color */
+.btn-linkedin {
+    background-color: #0073b2;
+    border-color: #0073b2; 
+}
+
+/*  Facebook button color on hover */
+.btn-linkedin:hover, 
+a .btn-linkedin:hover {
+    background-color: #005b8c;
+    border-color: #005b8c; 
+}
