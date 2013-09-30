@@ -20,7 +20,7 @@ var xPadding = 1152, yPadding = -73;
 
 var initDelay = 1000;  //Initial Delay before starting
 var aDelay=75;  //Delay
-var aSpeed=1;		 //Less is more!
+var aSpeed=2;		 //Less is more!
 
 var svg = d3.select("#svg-c")
       .append("svg")
@@ -117,7 +117,7 @@ function generateViz(data) {
 	    	// document.getElementById('m-tip').style.opacity=0.8;
     })
     .transition()
-    .duration(function(d) {return d.distance*aSpeed;})
+    .duration(function(d,i) {return i*aSpeed + 500;}) //Instead of d.distance*aSpeed+aDelay/aSpeed;
     .ease("linear")
     .delay(function(d,i) {return i*aDelay + initDelay;})
     .attr({
