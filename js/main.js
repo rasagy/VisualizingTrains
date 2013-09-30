@@ -19,7 +19,7 @@ var xPadding = 1152, yPadding = -73;
 
 
 var initDelay = 1000;  //Initial Delay before starting
-var aDelay=75;  //Delay
+var aDelay=50;  //Delay
 var aSpeed=2;		 //Less is more!
 
 var svg = d3.select("#svg-c")
@@ -28,6 +28,7 @@ var svg = d3.select("#svg-c")
       .attr("height",h);
 
 var myData;
+
 d3.csv("./data/Metro-trains.csv", function(error,data) {
   if (error) {  
     //If error is not null, something went wrong.
@@ -37,15 +38,16 @@ d3.csv("./data/Metro-trains.csv", function(error,data) {
     console.log("Dataset loaded!");
     console.log(data); 
     // return data; 
-    generateViz(data);           
+    myData=data;
+    generateViz();           
     }
  });
 
-function generateViz(data) {        
-
+function generateViz() {
+  console.log("Started");
   var connected = svg
   	.selectAll("path")
-    .data(data)
+    .data(myData)
     .enter()
     .append("path")
     .attr({
@@ -126,7 +128,7 @@ function generateViz(data) {
 
   var stations = svg
   	.selectAll("circles")
-    .data(data)
+    .data(myData)
     .enter()
     .append("circle")
     .attr({

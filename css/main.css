@@ -133,3 +133,9 @@ padding: 2px 2px;
 color: #f8f8f8;
 background: #111;
 }
+#text a.btn-tweet:hover {
+background-color: #41b7d8;
+}
+#text a.btn-facebook:hover {
+background-color: #3b5997;
+}
