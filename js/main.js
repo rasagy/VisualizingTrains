@@ -7,13 +7,19 @@ metro["Mumbai"] = [72.8776559,19.0759837];
 metro["Kolkata"] = [88.3638950,22.5726460];
 metro["Chennai"] = [80.2508246,13.0524139];
 
+var metroColors = new Array();
+metroColors[0]="hsl(0,90%,80%)"; metroColors[1]="hsl(120,80%,70%)"; metroColors[2]="hsl(50,100%,60%)"; metroColors[3]="hsl(220,80%,70%)"; //First Set
+// metroColors[0]="#FC8D62"; metroColors[1]="#8DA0CB"; metroColors[2]="#EEC92F"; metroColors[3]="#A6D854"; //Set2
+// metroColors[0]="#1B9E77"; metroColors[1]="#D95F02"; metroColors[2]="#7570B3"; metroColors[3]="#E7298A"; //Dark2
+// metroColors[0]="#1F78B4"; metroColors[1]="#33A02C"; metroColors[2]="#E31A1C"; metroColors[3]="#FF7F00"; //Paired
+
 //Custom scale to fit underlying map
 var xScale = 17, yScale = 18;
 var xPadding = 1152, yPadding = -73;
 
 
 var initDelay = 1000;  //Initial Delay before starting
-var aDelay=50;  //Delay
+var aDelay=75;  //Delay
 var aSpeed=1;		 //Less is more!
 
 var svg = d3.select("#svg-c")
@@ -29,11 +35,8 @@ d3.csv("./data/Metro-trains.csv", function(error,data) {
   } else {      
     //If no error, the file loaded correctly. Yay!
     console.log("Dataset loaded!");
-    // console.log(data[0].Scene+ " "+data[10].Day);   //Log the data.
     console.log(data); 
     // return data; 
-    // myData = data.map(function(d) { return [ +d["Scene"], d["Day"] ]; });
-    // console.log(myData);   //Log the data.
     generateViz(data);           
     }
  });
@@ -74,19 +77,19 @@ function generateViz(data) {
       'stroke': function(d,i) {
         switch (d.from_station_gen) {
           case "Delhi":
-          return "hsl(0,80%,70%)";
+          return metroColors[0];
           break;
           case "Mumbai":
-          return "hsl(100,80%,70%)";
+          return metroColors[1];
           break;
           case "Chennai":
-          return "hsl(150,80%,70%)";
+          return metroColors[2];
           break;
           case "Kolkata":
-          return "hsl(250,80%,70%)";
+          return metroColors[3];
           break;
           default: 
-          return "hsl(200,80%,70%)";
+          return "#555";
           break;
         }
       },
@@ -138,12 +141,11 @@ function generateViz(data) {
       opacity: 0,
     })
     .transition()
-    .duration(function(d) {return 0;})
+    .duration(function(d) {return 5;})
     .ease("linear")
     .delay(function(d,i) {return i*aDelay + initDelay;})
     .attr({
-    	'opacity': "0.1",
-      'stroke-dasharray': "500, 1"
+    	'opacity': "0.1"
     });
 }
 

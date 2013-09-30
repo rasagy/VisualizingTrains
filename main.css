@@ -61,6 +61,7 @@ i {font-style: italic;}
   width:800px;
   margin: 20px auto;
   background: #fff;
+  border: 3px solid #ddd;
 }
 #m-map {
 	position: absolute;
