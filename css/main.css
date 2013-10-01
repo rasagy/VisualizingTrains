@@ -144,4 +144,5 @@ background-color: #3b5997;
   visibility: hidden;
   position:absolute;
   z-index: -1;
+  top:0;
 }
