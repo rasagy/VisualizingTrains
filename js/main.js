@@ -1,3 +1,11 @@
+/*
+Main javascript code for Visualizing Indian trains from 4 Metros
+Output on: http://bit.ly/TrainViz
+Blog with process on: http://rasagy.in/blog/2013/09/how-do-the-4-metros-connect-india/
+
+If you have suggestions to improve the code, please feel free to comment on the blog/send a pull request/tweet to @rasagy!
+*/
+
 var w=800;
 var h=600;
 

@@ -100,12 +100,12 @@ i {font-style: italic;}
 
 #text {
 position: absolute;
-top: 20px;
+top: 50px;
 left: 520px;
-width: 280px;
+width: 290px;
 background: #333;
 color: #f8f8f8;
-padding: 10px;
+padding: 10px 5px 10px 10px;
 border: 3px solid #222;
 }
 #text h2{
@@ -127,7 +127,8 @@ color: #fff;
 text-decoration: none;
 display:inline-block;
 background: #222;
-padding: 2px 2px;
+padding: 0px 2px;
+margin-top:2px;
 }
 #text a:hover {
 color: #f8f8f8;
@@ -138,4 +139,9 @@ background-color: #41b7d8;
 }
 #text a.btn-facebook:hover {
 background-color: #3b5997;
+}
+#screen {
+  visibility: hidden;
+  position:absolute;
+  z-index: -1;
 }
