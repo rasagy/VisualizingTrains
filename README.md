@@ -12,6 +12,7 @@ Detailed design process on [the project tumblr page](http://visualizingtrains.tu
 ## ToDo
 
 * ~~Add Labels on hover (From > To)~~
+* Aggregate trains across cities and show a list
 * Use curved arcs instead of direct lines (Not really)
 * ~~Animate by City?~~
 * Animate by Time of Departure?
