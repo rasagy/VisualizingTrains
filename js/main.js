@@ -6,7 +6,7 @@ Blog with process on: http://rasagy.in/blog/2013/09/how-do-the-4-metros-connect-
 If you have suggestions to improve the code, please feel free to comment on the blog/send a pull request/tweet to @rasagy!
 */
 
-var w=800;
+var w=500;
 var h=600;
 
 var metro = new Array();
@@ -36,6 +36,9 @@ var svg = d3.select("#svg-c")
       .attr("height",h);
 
 var myData;
+var loopNext;
+var tipTimer;
+var loopDuration = 60000; //Loop every 1 Minute
 
 d3.csv("./data/Metro-trains.csv", function(error,data) {
   if (error) {  
@@ -50,6 +53,49 @@ d3.csv("./data/Metro-trains.csv", function(error,data) {
     generateViz();           
     }
  });
+
+function loopViz() {
+  console.log("Looping");
+
+  svg
+    .selectAll("circle")
+    .data(myData)
+    .transition()
+    .duration(initDelay)
+    .attr({
+      'opacity': 0,
+    })
+    .transition()
+    .duration(function(d) {return 5;})
+    .ease("linear")
+    .delay(function(d,i) {return i*aDelay+initDelay;})
+    .attr({
+      'opacity': "0.1"
+    });
+
+  svg
+    .selectAll("path")
+    .data(myData)
+    .transition()
+    .duration(initDelay)
+    .ease("quad")
+    .attr({
+      'stroke-dasharray': "1, 500",
+      'opacity':"0"
+    })
+    .attr({
+      'opacity':"0.2"
+    })
+    .transition()
+    .duration(function(d,i) {return i*aSpeed + 500;}) //Instead of d.distance*aSpeed+aDelay/aSpeed;
+    .ease("linear")
+    .delay(function(d,i) {return i*aDelay+initDelay;})
+    .attr({
+      'stroke-dasharray': "500, 1"
+    });
+
+  loopNext = setTimeout(loopViz, loopDuration);
+}
 
 function generateViz() {
   console.log("Started");
@@ -106,7 +152,8 @@ function generateViz() {
       'stroke-width': "1",
       'stroke-dasharray': "1, 500"
     })
-    .on("mouseover", function(d) {    	
+    .on("mouseover", function(d) {
+      clearTimeout(tipTimer);
     	coord = d3.mouse(this);
       console.log(d.to_station_name + "("+d.long+","+d.lat+") / "+coord[0]+","+coord[1]);
       msg="<b>"+d.name+"</b><br>From <i>"+d.from_station_name+"</i> to <i>"+d.to_station_name+"</i>";
@@ -124,6 +171,7 @@ function generateViz() {
 	      	'opacity': "0.2",
 	      	'stroke-width': "1",
 	    	});
+        tipTimer = setTimeout(hideTip,initDelay);
 	    	// document.getElementById('m-tip').style.opacity=0.8;
     })
     .transition()
@@ -135,7 +183,7 @@ function generateViz() {
     });
 
   var stations = svg
-  	.selectAll("circles")
+  	.selectAll("circle")
     .data(myData)
     .enter()
     .append("circle")
@@ -157,6 +205,9 @@ function generateViz() {
     .attr({
     	'opacity': "0.1"
     });
+
+    // var loopVizInterval = setInterval(loopViz, loopDuration);
+    loopNext = setTimeout(loopViz, loopDuration);
 }
 
 function showTip(text,x,y) {
@@ -165,8 +216,13 @@ function showTip(text,x,y) {
 	tip.style.opacity=1;	
 	tip.style.left=(x+10)+"px";
 	tip.style.top=(y+20)+"px";
-	//setTimeout(function () {}, 500);
 }
+
+function hideTip() {
+  var tip=document.getElementById('m-tip');
+  tip.style.opacity=0;
+}
+
 
 function rX(coord) {
   return coord*xScale-xPadding;
