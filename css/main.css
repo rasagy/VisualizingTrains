@@ -58,16 +58,17 @@ i {font-style: italic;}
 
 #main-c {
   position: relative;
-  width:800px;
+  width:700px;
   margin: 20px auto;
   background: #fff;
-  border: 3px solid #ddd;
+  border: 2px solid #ddd;
 }
+
 #m-map {
 	position: absolute;
 	top: 0;
 	left: 0;
-  background: url("./img/map-of-india.gif") no-repeat;
+  /*background: url("../img/map-of-india.gif") no-repeat;*/
   background-size:500px 550px;
   visibility: hidden;
 }
@@ -98,51 +99,74 @@ i {font-style: italic;}
 	color: #000;
 }
 
-#text {
-position: absolute;
-top: 50px;
-left: 520px;
-width: 290px;
-background: #333;
-color: #f8f8f8;
-padding: 10px 5px 10px 10px;
-border: 3px solid #222;
+#svg-c {
+  width:500px;
+  min-height:500px;
+  margin: 0 auto;
 }
+
+#text {
+background: #f8f8f8;
+position:relative;
+}
+
 #text h2{
 font-family: Georgia, Times, serif;
 font-size: 1.6em;
 line-height: 1.2em;
 font-weight: bold;
-padding: 0.4em 0;
+padding: 20px 15px;
+background: #fdfdfd;
+margin-bottom: 0.5em;
+border-bottom: 1px solid #ddd;
+border-top: 1px solid #ddd;
 }
+
+#help {
+font-family: Arial, sans-serif;
+position:absolute;
+top: -4em;
+right:0;
+text-align: right;
+font-style: italic;
+color: #ccc;
+font-size: 0.6em;
+line-height: 1.2em;
+padding: 5px 15px;
+}
+
 #text p {
 font-family: Arial, sans-serif;
-color: #eee;
+color: #666;
 font-size: 0.8em;
-line-height: 1.5em;
-margin-bottom: 0.75em;
+line-height: 1.2em;
+padding: 10px 15px;
 }
+
+#text p span{
+  font-weight: bold;
+}
+
 #text a {
-color: #fff;
+color: #111;
 text-decoration: none;
-display:inline-block;
-background: #222;
-padding: 0px 2px;
-margin-top:2px;
+border-bottom: #999 dotted 1px;
+background:none;
 }
 #text a:hover {
 color: #f8f8f8;
-background: #111;
+background: #333;
 }
+
 #text a.btn-tweet:hover {
 background-color: #41b7d8;
 }
 #text a.btn-facebook:hover {
 background-color: #3b5997;
 }
+
 #screen {
-  visibility: hidden;
   position:absolute;
   z-index: -1;
-  top:0;
+  top:-2px;
 }
